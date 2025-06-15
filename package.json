@@ -1,0 +1,21 @@
+{
+  "name": "students-api-angelina",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "ts-node-dev src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "test": "jest",
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs"
+  },
+  "dependencies": {
+    "fastify": "^4.0.0",
+    "fastify-postgres": "^5.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0",
+    "ts-node-dev": "^2.0.0",
+    "jest": "^29.0.0"
+  }
+}

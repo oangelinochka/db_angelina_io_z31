@@ -1,0 +1,4 @@
+node_modules/
+dist/
+.env
+db_angelina_io_z31.sqlite
