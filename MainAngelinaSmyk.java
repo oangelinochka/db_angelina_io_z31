@@ -1,5 +1,5 @@
-// Автор: Angelina Smyk, группа ІО-з31
-// Главное приложение
+// Автор: Angelina Smyk, група ІО-з31
+// Головний додаток
 
 import java.sql.Connection;
 import java.sql.Statement;
