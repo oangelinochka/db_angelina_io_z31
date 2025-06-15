@@ -1,19 +1,19 @@
 # Students API - Angelina Smyk
 
-Проект: REST API для управления студентами, адаптированный из Java-программы на базе Fastify и PostgreSQL.
+Проєкт: REST API для керування студентами, адаптований з Java-програми на базі Fastify та PostgreSQL.
 
 **Автор:** Angelina Smyk  
 **Курс:** 2  
-**Группа:** ІО-з31
+**Група:** ІО-з31
 
 ## Структура
 
-- `src/` — исходный код API (контроллеры, модели, маршруты)
-- `tests/` — модульные тесты
-- `docs/` — документация VuePress
-- `legacy-java-version/` — исходный Java-код до адаптации
+- `src/` — вихідний код API (контролери, моделі, маршрути)
+- `tests/` — модульні тести
+- `docs/` — документація VuePress
+- `legacy-java-version/` — вихідний Java-код до адаптації
 - `docker-compose.yml` — запуск PostgreSQL
-- `package.json` — зависимости и скрипты
+- `package.json` — залежності та скрипти
 
 ## Запуск
 
@@ -21,11 +21,12 @@
 docker-compose up --build
 ```
 
-API будет доступен на `http://localhost:3000`
+API буде доступне за адресою `http://localhost:3000`
 
-## Конечные точки API
+## Кінцеві точки API
 
-- `GET /students` — список студентов
-- `GET /students/:id` — студент по ID
-- `POST /students` — создать студента
-- `DELETE /students/:id` — удалить студента
+- `GET /students` — список студентів
+- `GET /students/:id` — студент за ID
+- `POST /students` — створити студента
+- `DELETE /students/:id` — видалити студента
+
