@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-  <meta charset="UTF-8" />
-  <title>RESTful Service</title>
+  <meta charset="UTF-8">
+  <title>RESTful Service | Система управління проєктами</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -10,48 +10,83 @@
     <h1>Система управління проєктами</h1>
     <h2>RESTful Service</h2>
   </header>
-  <nav>
-    <ul>
-      <li><a href="index.html">Головна</a></li>
-      <li><a href="analysis.html">Аналіз предметної області</a></li>
-      <li><a href="stakeholders.html">Запити зацікавлених осіб</a></li>
-      <li><a href="business_model.html">Модель бізнес-об’єктів</a></li>
-      <li><a href="er_model.html">ER‑модель</a></li>
-      <li><a href="sql.html">SQL</a></li>
-    </ul>
-  </nav>
+
   <main>
-    <section>
-      <h3>Опис RESTful API</h3>
-      <p>RESTful сервіс надає інтерфейс для роботи з ресурсами системи управління проєктами.</p>
-      <ul>
-        <li><code>GET /projects</code> — отримати список проєктів</li>
-        <li><code>GET /projects/{id}</code> — отримати інформацію про конкретний проєкт</li>
-        <li><code>POST /tasks</code> — створити нову задачу</li>
-        <li><code>PUT /tasks/{id}</code> — оновити задачу</li>
-        <li><code>DELETE /tasks/{id}</code> — видалити задачу</li>
-      </ul>
-    </section>
-    <section>
-      <h3>Приклад запиту</h3>
-      <pre><code>GET /projects HTTP/1.1
-Host: api.projectmanager.com
-Accept: application/json
-</code></pre>
-    </section>
-    <section>
-      <h3>Приклад відповіді</h3>
-      <pre><code>[
+    <h3>Що таке REST?</h3>
+    <p>
+      REST (Representational State Transfer) — це архітектурний стиль для створення веб-сервісів, які працюють через протокол HTTP.
+      RESTful API дозволяє клієнтам (наприклад, веб-додаткам) взаємодіяти з сервером через стандартні HTTP-запити.
+    </p>
+
+    <h3>Основні HTTP-методи</h3>
+    <ul>
+      <li><strong>GET</strong> — отримання даних (наприклад, список проєктів)</li>
+      <li><strong>POST</strong> — створення нового ресурсу (наприклад, нова задача)</li>
+      <li><strong>PUT</strong> — оновлення ресурсу</li>
+      <li><strong>DELETE</strong> — видалення ресурсу</li>
+    </ul>
+
+    <h3>Приклад REST-запитів для системи управління проєктами</h3>
+
+    <h4>1. Отримати всі задачі</h4>
+    <pre><code>
+GET /api/tasks
+    </code></pre>
+
+    <h4>JSON-відповідь:</h4>
+    <pre><code>
+[
   {
-    \"project_id\": 1,
-    \"name\": \"Запуск сайту\",
-    \"description\": \"Розробка та запуск офіційного сайту компанії\",
-    \"start_date\": \"2025-06-01\",
-    \"end_date\": \"2025-08-01\"
+    "id": 1,
+    "title": "Підготовка ТЗ",
+    "status": "У процесі",
+    "assigned_to": "Іван Петренко"
+  },
+  {
+    "id": 2,
+    "title": "Розробка бази даних",
+    "status": "Не розпочато",
+    "assigned_to": "Олена Коваленко"
   }
-]</code></pre>
-    </section>
+]
+    </code></pre>
+
+    <h4>2. Створити нову задачу</h4>
+    <pre><code>
+POST /api/tasks
+Content-Type: application/json
+
+{
+  "title": "Тестування API",
+  "status": "У процесі",
+  "assigned_to": 3,
+  "project_id": 1,
+  "due_date": "2025-06-20"
+}
+    </code></pre>
+
+    <h4>3. Оновити статус задачі</h4>
+    <pre><code>
+PUT /api/tasks/1
+Content-Type: application/json
+
+{
+  "status": "Завершено"
+}
+    </code></pre>
+
+    <h4>4. Видалити задачу</h4>
+    <pre><code>
+DELETE /api/tasks/2
+    </code></pre>
+
+    <h3>Висновок</h3>
+    <p>
+      RESTful сервіс у проєкті дозволяє інтегрувати клієнтські додатки з базою даних через HTTP-запити.
+      Це забезпечує масштабованість, простоту та сумісність із сучасними вебтехнологіями.
+    </p>
   </main>
+
   <footer>
     <p>© 2025 Автор: Ангеліна Смик</p>
   </footer>
