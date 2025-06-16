@@ -1,0 +1,100 @@
+/* Общие стили */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  background-color: #f9f9f9;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+/* Контейнер */
+main {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 0 20px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  border-radius: 8px;
+}
+
+/* Хедер */
+header {
+  background-color: #4a90e2;
+  color: white;
+  padding: 20px 0;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+  border-radius: 0 0 10px 10px;
+}
+
+/* Заголовки */
+h1 {
+  margin: 0;
+  font-weight: 700;
+}
+
+h2 {
+  margin-top: 0;
+  color: #4a90e2;
+  border-bottom: 2px solid #4a90e2;
+  padding-bottom: 8px;
+}
+
+/* Навигация */
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 15px 0 0;
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+}
+
+nav ul li {
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 8px 15px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+nav ul li a:hover,
+nav ul li a:focus {
+  background-color: #357abd;
+  outline: none;
+}
+
+/* Текст и параграфы */
+p {
+  font-size: 1.1rem;
+  margin-bottom: 1.2rem;
+}
+
+/* Ссылки в тексте */
+a {
+  color: #4a90e2;
+  text-decoration: underline;
+}
+
+a:hover,
+a:focus {
+  color: #2c5c9a;
+  text-decoration: none;
+}
+
+/* Адаптивность */
+@media (max-width: 600px) {
+  nav ul {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  main {
+    margin: 20px 10px;
+  }
+}
