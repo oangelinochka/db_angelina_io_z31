@@ -27,13 +27,78 @@
       <img src="img/er_model.png" alt="ER-модель" style="max-width:100%; border-radius: 10px;">
     </section>
     <section>
-      <h3>Опис сутностей</h3>
-      <ul>
-        <li><strong>Проєкт</strong> (Project): ідентифікатор, назва, опис, дата початку, дата завершення.</li>
-        <li><strong>Задача</strong> (Task): ідентифікатор, опис, статус, пріоритет, термін, проект, виконавець.</li>
-        <li><strong>Користувач</strong> (User): ідентифікатор, ім'я, роль, email.</li>
-        <li><strong>Ресурс</strong> (Resource): ідентифікатор, тип, посилання, проект.</li>
-      </ul>
+   <h3>ER-модель (Сутнісно-зв’язна модель)</h3>
+
+<p>ER-модель описує структуру даних, що використовуються в системі управління проєктами. Вона містить основні сутності (таблиці), атрибути та зв’язки між ними. Ця модель слугує основою для побудови реляційної бази даних.</p>
+
+<h4>Сутності та атрибути:</h4>
+
+<ul>
+  <li><strong>User (Користувач)</strong>
+    <ul>
+      <li>user_id (PK)</li>
+      <li>name</li>
+      <li>email</li>
+      <li>role (admin, manager, developer)</li>
+    </ul>
+  </li>
+
+  <li><strong>Project (Проєкт)</strong>
+    <ul>
+      <li>project_id (PK)</li>
+      <li>title</li>
+      <li>description</li>
+      <li>created_at</li>
+      <li>deadline</li>
+      <li>status</li>
+      <li>owner_id (FK → User.user_id)</li>
+    </ul>
+  </li>
+
+  <li><strong>Task (Задача)</strong>
+    <ul>
+      <li>task_id (PK)</li>
+      <li>title</li>
+      <li>description</li>
+      <li>status</li>
+      <li>priority</li>
+      <li>deadline</li>
+      <li>project_id (FK → Project.project_id)</li>
+      <li>assignee_id (FK → User.user_id)</li>
+    </ul>
+  </li>
+
+  <li><strong>Comment (Коментар)</strong>
+    <ul>
+      <li>comment_id (PK)</li>
+      <li>content</li>
+      <li>created_at</li>
+      <li>task_id (FK → Task.task_id)</li>
+      <li>author_id (FK → User.user_id)</li>
+    </ul>
+  </li>
+
+  <li><strong>Attachment (Файл)</strong>
+    <ul>
+      <li>file_id (PK)</li>
+      <li>file_name</li>
+      <li>file_url</li>
+      <li>task_id (FK → Task.task_id)</li>
+    </ul>
+  </li>
+</ul>
+
+<h4>Основні зв’язки:</h4>
+<ul>
+  <li>Один користувач може створювати багато проєктів (1 → N).</li>
+  <li>Один проєкт має багато задач (1 → N).</li>
+  <li>Одна задача має одного виконавця (N → 1).</li>
+  <li>Одна задача має багато коментарів (1 → N).</li>
+  <li>Один користувач може залишати багато коментарів (1 → N).</li>
+  <li>Одна задача може мати багато вкладень (1 → N).</li>
+</ul>
+
+<p>ER-модель дає чітке уявлення про структуру даних у системі та є основою для проєктування таблиць у СУБД (наприклад, PostgreSQL або MySQL).</p>
     </section>
   </main>
   <footer>
