@@ -1,48 +1,107 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-  <meta charset="UTF-8" />
-  <title>SQL</title>
+  <meta charset="UTF-8">
+  <title>SQL | Система управління проєктами</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header>
     <h1>Система управління проєктами</h1>
-    <h2>SQL</h2>
+    <h2>SQL-запити</h2>
   </header>
-  <nav>
-    <ul>
-      <li><a href="index.html">Головна</a></li>
-      <li><a href="analysis.html">Аналіз предметної області</a></li>
-      <li><a href="stakeholders.html">Запити зацікавлених осіб</a></li>
-      <li><a href="business_model.html">Модель бізнес-об’єктів</a></li>
-      <li><a href="er_model.html">ER‑модель</a></li>
-      <li><a href="rest_service.html">RESTful Service</a></li>
-    </ul>
-  </nav>
+
   <main>
-    <section>
-      <h3>Приклади SQL-запитів</h3>
-      <h4>Створення таблиці <code>projects</code></h4>
-      <pre><code>CREATE TABLE projects (
-  project_id SERIAL PRIMARY KEY,
-  name VARCHAR(100) NOT NULL,
-  description TEXT,
-  start_date DATE,
-  end_date DATE
-);</code></pre>
+    <h3>Створення таблиць</h3>
+    <pre><code>
+CREATE TABLE users (
+    id SERIAL PRIMARY KEY,
+    full_name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL
+);
 
-      <h4>Вставка даних у <code>tasks</code></h4>
-      <pre><code>INSERT INTO tasks (task_id, description, status, project_id, user_id, priority, deadline)
-VALUES (1, 'Розробити головну сторінку', 'В роботі', 1, 2, 'Високий', '2025-07-01');</code></pre>
+CREATE TABLE projects (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    description TEXT,
+    start_date DATE,
+    end_date DATE
+);
 
-      <h4>Отримати всі задачі по проєкту</h4>
-      <pre><code>SELECT t.task_id, t.description, t.status, u.name AS executor
-FROM tasks t
-JOIN users u ON t.user_id = u.user_id
-WHERE t.project_id = 1;</code></pre>
-    </section>
+CREATE TABLE tasks (
+    id SERIAL PRIMARY KEY,
+    project_id INT REFERENCES projects(id),
+    title VARCHAR(200) NOT NULL,
+    status VARCHAR(50),
+    assigned_to INT REFERENCES users(id),
+    due_date DATE
+);
+    </code></pre>
+
+    <h3>Вставка даних</h3>
+    <pre><code>
+INSERT INTO users (full_name, email)
+VALUES
+('Іван Петренко', 'ivan@example.com'),
+('Олена Коваленко', 'olena@example.com');
+
+INSERT INTO projects (name, description, start_date, end_date)
+VALUES
+('Проєкт A', 'Опис проєкту A', '2025-01-01', '2025-06-01');
+
+INSERT INTO tasks (project_id, title, status, assigned_to, due_date)
+VALUES
+(1, 'Підготовка ТЗ', 'У процесі', 1, '2025-01-15'),
+(1, 'Розробка бази даних', 'Не розпочато', 2, '2025-02-01');
+    </code></pre>
+
+    <h3>Базові SELECT-запити</h3>
+    <pre><code>
+-- Усі користувачі
+SELECT * FROM users;
+
+-- Усі задачі проєкту з ID 1
+SELECT title, status, due_date
+FROM tasks
+WHERE project_id = 1;
+    </code></pre>
+
+    <h3>JOIN-запит</h3>
+    <pre><code>
+-- Показати задачі разом із відповідальними користувачами
+SELECT tasks.title, tasks.status, users.full_name
+FROM tasks
+JOIN users ON tasks.assigned_to = users.id;
+    </code></pre>
+
+    <h3>Оновлення та видалення</h3>
+    <pre><code>
+-- Оновити статус задачі
+UPDATE tasks
+SET status = 'Завершено'
+WHERE id = 1;
+
+-- Видалити користувача
+DELETE FROM users
+WHERE id = 2;
+    </code></pre>
+
+    <h3>Агрегація</h3>
+    <pre><code>
+-- Порахувати кількість задач у кожному проєкті
+SELECT projects.name, COUNT(tasks.id) AS total_tasks
+FROM projects
+LEFT JOIN tasks ON projects.id = tasks.project_id
+GROUP BY projects.name;
+    </code></pre>
+
+    <h3>Висновок</h3>
+    <p>
+      Представлені SQL-запити демонструють базову роботу з таблицями, створеними в рамках проєкту.
+      Вони охоплюють створення структури, маніпуляцію даними та виконання типових запитів на вибірку, фільтрацію та зв’язування таблиць.
+    </p>
   </main>
+
   <footer>
     <p>© 2025 Автор: Ангеліна Смик</p>
   </footer>
