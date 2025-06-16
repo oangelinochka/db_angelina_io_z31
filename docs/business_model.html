@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <title>Модель бізнес-об’єктів</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header>
+    <h1>Система управління проєктами</h1>
+    <h2>Модель бізнес-об’єктів</h2>
+  </header>
+  <nav>
+    <ul>
+      <li><a href="index.html">Головна</a></li>
+      <li><a href="analysis.html">Аналіз предметної області</a></li>
+      <li><a href="stakeholders.html">Запити зацікавлених осіб</a></li>
+      <li><a href="er_model.html">ER‑модель</a></li>
+      <li><a href="sql.html">SQL</a></li>
+      <li><a href="rest_service.html">RESTful Service</a></li>
+    </ul>
+  </nav>
+  <main>
+    <section>
+      <h3>Опис бізнес-об’єктів</h3>
+      <p>Основні бізнес-об’єкти системи управління проєктами:</p>
+      <ul>
+        <li><strong>Проєкт</strong> — набір задач, ресурсів і учасників, що мають спільну мету.</li>
+        <li><strong>Задача</strong> — конкретне завдання в межах проєкту з відповідальним виконавцем.</li>
+        <li><strong>Користувач</strong> — учасник системи (менеджер, розробник, тестувальник).</li>
+        <li><strong>Ресурс</strong> — файли, документи або інші матеріали, пов’язані з проєктом.</li>
+        <li><strong>Статус</strong> — стан задачі (Наприклад: "Новий", "В роботі", "Завершено").</li>
+      </ul>
+    </section>
+    <section>
+      <h3>Взаємозв’язки</h3>
+      <ul>
+        <li>Кожен <em>проєкт</em> містить багато <em>задач</em>.</li>
+        <li><em>Задача</em> має одного відповідального <em>користувача</em>.</li>
+        <li><em>Проєкт</em> має набір <em>ресурсів</em>.</li>
+        <li><em>Статус</em> визначає поточний стан <em>задачі</em>.</li>
+      </ul>
+      <img src="img/business_model.png" alt="Модель бізнес-об’єктів" style="max-width:100%; margin-top:20px; border-radius: 10px;">
+    </section>
+  </main>
+  <footer>
+    <p>© 2025 Автор: [Твоє ім’я]</p>
+  </footer>
+</body>
+</html>
