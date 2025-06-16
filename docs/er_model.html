@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <title>ER-модель</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header>
+    <h1>Система управління проєктами</h1>
+    <h2>ER-модель</h2>
+  </header>
+  <nav>
+    <ul>
+      <li><a href="index.html">Головна</a></li>
+      <li><a href="analysis.html">Аналіз предметної області</a></li>
+      <li><a href="stakeholders.html">Запити зацікавлених осіб</a></li>
+      <li><a href="business_model.html">Модель бізнес-об’єктів</a></li>
+      <li><a href="sql.html">SQL</a></li>
+      <li><a href="rest_service.html">RESTful Service</a></li>
+    </ul>
+  </nav>
+  <main>
+    <section>
+      <h3>ER-модель системи</h3>
+      <p>Нижче представлена ER-модель, яка ілюструє основні сутності та їх зв’язки:</p>
+      <img src="img/er_model.png" alt="ER-модель" style="max-width:100%; border-radius: 10px;">
+    </section>
+    <section>
+      <h3>Опис сутностей</h3>
+      <ul>
+        <li><strong>Проєкт</strong> (Project): ідентифікатор, назва, опис, дата початку, дата завершення.</li>
+        <li><strong>Задача</strong> (Task): ідентифікатор, опис, статус, пріоритет, термін, проект, виконавець.</li>
+        <li><strong>Користувач</strong> (User): ідентифікатор, ім'я, роль, email.</li>
+        <li><strong>Ресурс</strong> (Resource): ідентифікатор, тип, посилання, проект.</li>
+      </ul>
+    </section>
+  </main>
+  <footer>
+    <p>© 2025 Автор: [Ангеліна Смик]</p>
+  </footer>
+</body>
+</html>
